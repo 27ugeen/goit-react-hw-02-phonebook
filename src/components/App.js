@@ -14,12 +14,8 @@ export default class App extends Component {
   };
 
   static propTypes = {
-    contacts: PropTypes.array,
-    filter: PropTypes.string,
-    addContact: PropTypes.func,
-    deleteContact: PropTypes.func,
-    changeFilter: PropTypes.func,
-    getFilteredContacts: PropTypes.func,
+    contacts: PropTypes.array.isRequired,
+    filter: PropTypes.string.isRequired,
   };
 
   state = {
@@ -62,8 +58,8 @@ export default class App extends Component {
 
   getFilteredContacts = () => {
     const { contacts, filter } = this.state;
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filter.toLowerCase()),
+    return contacts.filter(({ name }) =>
+      name.toLowerCase().includes(filter.toLowerCase()),
     );
   };
 

@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import styles from './PhoneBook.module.css';
 
-export default class PfoneBook extends Component {
+const { form, inputLabel, input, formButton } = styles;
+
+export default class PhoneBook extends Component {
   static defaultProps = {
     name: '',
     number: '',
   };
 
   static propTypes = {
-    name: PropTypes.string,
-    number: PropTypes.string,
-    handleInputChange: PropTypes.func,
-    handleSubmit: PropTypes.func,
+    name: PropTypes.string.isRequired,
+    number: PropTypes.string.isRequired,
+    onAddContact: PropTypes.func.isRequired,
   };
 
   state = {
@@ -43,32 +45,34 @@ export default class PfoneBook extends Component {
     const { name, number } = this.state;
     return (
       <>
-        <form onSubmit={this.handleSubmit}>
-          <label className="TaskEditor-label">
+        <form className={form} onSubmit={this.handleSubmit}>
+          <label className={inputLabel} htmlFor="name">
             Name
-            <input
-              className="TaskEditor-input"
-              type="text"
-              placeholder="Enter user name*"
-              value={name}
-              onChange={this.handleInputChange}
-              name="name"
-              required
-            />
           </label>
-          <label className="TaskEditor-label">
+          <input
+            className={input}
+            type="text"
+            placeholder="Enter user name*"
+            value={name}
+            onChange={this.handleInputChange}
+            name="name"
+            id="name"
+            required
+          />
+          <label className={inputLabel} htmlFor="number">
             Number
-            <input
-              className="TaskEditor-input"
-              type="text"
-              placeholder="Enter user phone*"
-              value={number}
-              onChange={this.handleInputChange}
-              name="number"
-              required
-            />
           </label>
-          <button type="submit" className="TaskEditor-button">
+          <input
+            className={input}
+            type="text"
+            placeholder="Enter user phone number*"
+            value={number}
+            onChange={this.handleInputChange}
+            name="number"
+            id="number"
+            required
+          />
+          <button type="submit" className={formButton}>
             Add contact
           </button>
         </form>
