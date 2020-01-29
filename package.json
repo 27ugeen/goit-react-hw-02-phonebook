@@ -12,6 +12,7 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-scripts": "3.3.0",
+    "shortid": "^2.2.15",
     "uuidv4": "^6.0.2"
   },
   "scripts": {

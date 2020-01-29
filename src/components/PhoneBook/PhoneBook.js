@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import shortid from 'shortid';
 import PropTypes from 'prop-types';
 import styles from './PhoneBook.module.css';
 
@@ -43,10 +44,13 @@ export default class PhoneBook extends Component {
 
   render() {
     const { name, number } = this.state;
+
+    const idName = shortid.generate();
+    const idNummber = shortid.generate();
     return (
       <>
         <form className={form} onSubmit={this.handleSubmit}>
-          <label className={inputLabel} htmlFor="name">
+          <label className={inputLabel} htmlFor={idName}>
             Name
           </label>
           <input
@@ -56,10 +60,10 @@ export default class PhoneBook extends Component {
             value={name}
             onChange={this.handleInputChange}
             name="name"
-            id="name"
+            id={idName}
             required
           />
-          <label className={inputLabel} htmlFor="number">
+          <label className={inputLabel} htmlFor={idNummber}>
             Number
           </label>
           <input
@@ -69,7 +73,7 @@ export default class PhoneBook extends Component {
             value={number}
             onChange={this.handleInputChange}
             name="number"
-            id="number"
+            id={idNummber}
             required
           />
           <button type="submit" className={formButton}>
